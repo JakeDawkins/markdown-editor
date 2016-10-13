@@ -20,7 +20,10 @@ class App extends Component {
   wrapperStyles () {
     return (
       {
-        margin: "20px"
+        padding: "12px",
+        height: "100%",
+        minHeight: "100%",
+        overflow: "scroll"
       }
     );
   }
