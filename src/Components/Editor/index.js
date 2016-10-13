@@ -4,6 +4,9 @@ export default class Editor extends Component {
 
   constructor(props) {
     super(props);
+    // this.state = {
+    //   text: this.props.startText || ""
+    // }
     this.handleChange = this.handleChange.bind(this);
   }
 
@@ -18,14 +21,18 @@ export default class Editor extends Component {
   }
 
   handleChange () {
-    console.log(this.refs);
-    let md = this.refs.input.innerText;
-    this.props.onChange(md);
+    // this.setState({text: this.refs.input.innerText});
+    this.props.onChange(this.refs.input.innerText);
   }
 
   render () {
     return (
-      <div style={this.taStyles()} onInput={this.handleChange} ref="input" contentEditable />
+      <div
+        className={this.props.position || ""}
+        onInput={this.handleChange}
+        ref="input" contentEditable
+        style={{paddingTop: "24px"}}
+      />
     );
   }
 

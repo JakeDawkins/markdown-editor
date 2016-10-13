@@ -3,6 +3,9 @@ import './styles.scss';
 
 import Editor from "../../Components/Editor";
 import ReactMarkdown from "react-markdown";
+import ActionsBar from "../../Components/ActionsBar";
+
+const sampleText = "# Edit on the left";
 
 class App extends Component {
 
@@ -17,33 +20,13 @@ class App extends Component {
     );
   }
 
-  wrapperStyles () {
-    return (
-      {
-        padding: "12px",
-        height: "100%",
-        minHeight: "100%",
-        overflow: "scroll"
-      }
-    );
-  }
-
-  mdStyles () {
-    return (
-      {
-        border: "3px solid red",
-        width: "50%",
-        display: "inline-block"
-      }
-    );
-  }
-
   render () {
     return (
-      <div style={this.wrapperStyles()}>
-        <Editor onChange={this.handleChange}/>
-        <div style={this.mdStyles()}>
-          <ReactMarkdown source={this.state && this.state.md ? this.state.md : "# Test"} />
+      <div id="mainWrapper">
+        <ActionsBar />
+        <Editor position="left" onChange={this.handleChange} startText={sampleText} />
+        <div className="right">
+          <ReactMarkdown source={this.state && this.state.md ? this.state.md : sampleText} />
         </div>
       </div>
     );
