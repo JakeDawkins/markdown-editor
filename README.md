@@ -1,44 +1,15 @@
-# react-boilerplate
+# markdown-editor
 
-This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
+This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
+and forked from [My boilerplate](https://github.com/jakedakwins/reace-boilerplate)
+
 
 ### About
 
-This repo is a basic create-react-app instance that has had the following changes:
+This project is a simple markdown editor using react and react-markdown.
 
-1. Ejected
-2. Components folder and pages folder added
-3. Added SCSS preLoaders
-3. Mapped SCSS files to a stub for jest testing files that import SCSS files
+There will be 3 components:
 
-
-### Make your own instead
-
-- Good for making sure everything is up to date
-
-```
-create-react-app project-name
-cd project-name
-npm run eject
-npm install sass-loader node-sass --save-dev
-```
-
-__Import the loaders to make sure SCSS compiles__
-
-Add to the preLoaders array in `/config/webpack.config.dev.js` and `/config/webpack.config.prod.js`
-
-```
-{
-  test: /\.scss$/,
-  include: paths.appSrc,
-  loaders: ["style", "css", "sass"]
-}
-```
-
-__Lastly, to ignore SCSS imports for testing__
-
-Add to moduleNameMapper in package.json
-
-```
-"^.+\\.scss$": "<rootDir>/config/jest/CSSStub.js"
-```
+1. an editor pane
+2. a preview pane
+3. the ability to copy a json compatible string to the clipboard
