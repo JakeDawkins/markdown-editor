@@ -35,7 +35,7 @@ class App extends Component {
 
     text = this.escapeHtml(text);
     text = text.replace(/\r?\n/g, "\\n");
-    this.handleChange(text);
+    this.handleChange(`"${text}"`);
   }
 
   render () {
