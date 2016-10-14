@@ -1,6 +1,4 @@
-# markdown-editor
-
-_**NOTE:** This project is still in progress. Parsing the JSON string still has some problems_
+# Micro-md
 
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app)
 and forked from [My boilerplate](https://github.com/jakedakwins/reace-boilerplate)
