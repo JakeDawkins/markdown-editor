@@ -12,6 +12,7 @@ class App extends Component {
   constructor (props) {
     super();
     this.handleChange = this.handleChange.bind(this);
+    this.copyToClipboard = this.copyToClipboard.bind(this);
   }
 
   handleChange (input) {
@@ -20,11 +21,22 @@ class App extends Component {
     );
   }
 
+  copyToClipboard() {
+    let text = this.state && this.state.md ? this.state.md : "";
+    if(text.length === 0) return;
+
+    text = text.replace(/\r\n?|\n/g, '<br />');
+
+    window.prompt("Copy to clipboard: Ctrl+C, Enter", this.state.md)
+  }
+
   render () {
     return (
       <div id="mainWrapper">
-        <ActionsBar />
-        <Editor position="left" onChange={this.handleChange} startText={sampleText} />
+        <ActionsBar handleCopyClipboard={this.copyToClipboard}/>
+        <div className="left">
+          <Editor position="left" onChange={this.handleChange} startText={sampleText} />
+        </div>
         <div className="right">
           <ReactMarkdown source={this.state && this.state.md ? this.state.md : sampleText} />
         </div>

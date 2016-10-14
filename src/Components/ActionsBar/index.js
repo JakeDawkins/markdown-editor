@@ -5,7 +5,7 @@ export default class ActionBar extends Component {
     return (
       <nav>
         <span><em>Micro-md</em></span>
-        <button>orientations</button>
+        {/*<button onClick={this.props.handleCopyClipboard}>Copy to Clipboard</button>*/}
       </nav>
     );
   }
