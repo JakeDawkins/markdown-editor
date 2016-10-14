@@ -19,11 +19,11 @@ class App extends Component {
 
   // Use the browser's built-in functionality to quickly and safely escape
   // the string
-  escapeHtml(str) {
-      var div = document.createElement('div');
-      div.appendChild(document.createTextNode(str));
-      return div.innerHTML;
-  }
+  // escapeHtml(str) {
+  //     var div = document.createElement('div');
+  //     div.appendChild(document.createTextNode(str));
+  //     return div.innerHTML;
+  // }
 
   handleChange (input) {
     this.setState(
@@ -35,9 +35,11 @@ class App extends Component {
     let text = this.state && this.state.md ? this.state.md : "";
     if(text.length === 0) return;
 
-    text = this.escapeHtml(text);
-    text = text.replace(/\r?\n/g, "\\n");
-    text = text.replace(/`/, "\\`");
+    text = text.replace(/\r?\n/g, "\\n"); //replace newline
+    text = text.replace(/\[/, "\\[");
+    text = text.replace(/\]/, "\\]");
+    text = text.replace(/\(/, "\\(");
+    text = text.replace(/\)/, "\\)");
     this.handleChange(`"${text}"`);
   }
 
@@ -55,7 +57,7 @@ class App extends Component {
           <Editor position="left" onChange={this.handleChange} startText={sampleText} />
         </div>
         <div className="right">
-          <ReactMarkdown source={this.state && this.state.md ? this.state.md : sampleText} />
+          <ReactMarkdown escapeHtml source={this.state && this.state.md ? this.state.md : sampleText} />
         </div>
       </div>
     );
