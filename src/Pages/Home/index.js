@@ -13,6 +13,8 @@ class App extends Component {
     super();
     this.handleChange = this.handleChange.bind(this);
     this.convertTextToJSONSafeString = this.convertTextToJSONSafeString.bind(this);
+    this.showHelp = this.showHelp.bind(this);
+
   }
 
   // Use the browser's built-in functionality to quickly and safely escape
@@ -38,10 +40,16 @@ class App extends Component {
     this.handleChange(`"${text}"`);
   }
 
+  showHelp () {
+    this.setState(
+      {md: "# Help\n\nEnter valid markdown on the left side. This pane will auto-update\n\nTo copy a JSON safe string:\n\n- Click the \"Convert to JSON String\" button\n\n- Triple click the line\n\n- Right click and copy the selected text"}
+    )
+  }
+
   render () {
     return (
       <div id="mainWrapper">
-        <ActionsBar handleConvert={this.convertTextToJSONSafeString}/>
+        <ActionsBar showHelp={this.showHelp} handleConvert={this.convertTextToJSONSafeString}/>
         <div className="left">
           <Editor position="left" onChange={this.handleChange} startText={sampleText} />
         </div>
