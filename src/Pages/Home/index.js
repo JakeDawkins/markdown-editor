@@ -41,6 +41,7 @@ class App extends Component {
     if(text.length === 0) return;
 
     text = text.replace(/\r?\n/g, "\\n"); //replace newline
+    text = text.replace(/"/g, '\\"'); //replace double quotes
     return text;
   }
 
